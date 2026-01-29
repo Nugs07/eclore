@@ -27,8 +27,8 @@ export default function LoginPage() {
       setError(error.message);
       setLoading(false);
     } else {
-      router.push('/app');
-      router.refresh();
+      // Force full page reload to ensure cookies are sent
+      window.location.href = '/app';
     }
   };
 
