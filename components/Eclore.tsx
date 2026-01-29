@@ -324,11 +324,11 @@ function SecondarySelector({ axes, onSelect, onSkip, S, t }: { axes: AxisAnalysi
   return (
     <div style={{ marginTop: '12px' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
-        {axes.map(a => <button key={a.id} onClick={() => toggle(a.id)} style={{ ...(S.card as React.CSSProperties), padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0, display: 'flex', alignItems: 'center', gap: '12px', border: selected.includes(a.id) ? `2px solid ${t.accent}` : 'none', background: selected.includes(a.id) ? `${t.accent}10` : t.card }}><span style={{ fontSize: '24px' }}>{a.icon}</span><div style={{ flex: 1 }}><p style={{ fontWeight: '500' }}>{a.label}</p></div>{selected.includes(a.id) && <span style={{ color: t.accent }}>✓</span>}</button>)}
+        {axes.map(a => <button className="btn-option" key={a.id} onClick={() => toggle(a.id)} style={{ ...(S.card as React.CSSProperties), padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0, display: 'flex', alignItems: 'center', gap: '12px', border: selected.includes(a.id) ? `2px solid ${t.accent}` : 'none', background: selected.includes(a.id) ? `${t.accent}10` : t.card }}><span style={{ fontSize: '24px' }}>{a.icon}</span><div style={{ flex: 1 }}><p style={{ fontWeight: '500' }}>{a.label}</p></div>{selected.includes(a.id) && <span style={{ color: t.accent }}>✓</span>}</button>)}
       </div>
       <div style={{ display: 'flex', gap: '10px' }}>
-        <button onClick={() => onSelect(selected)} style={{ ...(S.btn as (f: boolean) => React.CSSProperties)(true), flex: 1 }}>{selected.length > 0 ? `Valider (${selected.length})` : 'Valider'}</button>
-        <button onClick={onSkip} style={S.btnSm as React.CSSProperties}>Passer</button>
+        <button className="btn-primary" onClick={() => onSelect(selected)} style={{ ...(S.btn as (f: boolean) => React.CSSProperties)(true), flex: 1 }}>{selected.length > 0 ? `Valider (${selected.length})` : 'Valider'}</button>
+        <button className="btn-sm" onClick={onSkip} style={S.btnSm as React.CSSProperties}>Passer</button>
       </div>
     </div>
   );
@@ -760,7 +760,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
       <div style={{ marginBottom: '48px', position: 'relative', zIndex: 1 }}><GlassOrb size={140} /></div>
       <h1 style={{ fontSize: '48px', fontWeight: '200', marginBottom: '16px', color: t.text, letterSpacing: '2px', position: 'relative', zIndex: 1 }}>éclore</h1>
       <p style={{ color: t.soft, fontSize: '16px', marginBottom: '80px', fontWeight: '300', letterSpacing: '1.5px', textTransform: 'uppercase', position: 'relative', zIndex: 1 }}>ton compagnon post-partum</p>
-      <button style={{ ...S.btn(true), maxWidth: '260px', fontSize: '15px', letterSpacing: '1px', position: 'relative', zIndex: 1 }} onClick={() => { setScreen('onboarding'); setOnboardStep(0); }}>Commencer</button>
+      <button className="btn-primary" style={{ ...S.btn(true), maxWidth: '260px', fontSize: '15px', letterSpacing: '1px', position: 'relative', zIndex: 1 }} onClick={() => { setScreen('onboarding'); setOnboardStep(0); }}>Commencer</button>
     </div>
   );
 
@@ -787,25 +787,25 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         <div style={{ padding: '20px 24px 36px' }}>
           {last?.showChoice ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <button style={S.btn(true)} onClick={() => finishOnboarding(true)}>Continuer le questionnaire</button>
-              <button style={{ ...S.btnSm, background: 'rgba(255,255,255,0.5)', border: 'none' }} onClick={() => finishOnboarding(false)}>Découvrir mon espace d&apos;abord</button>
+              <button className="btn-primary" style={S.btn(true)} onClick={() => finishOnboarding(true)}>Continuer le questionnaire</button>
+              <button className="btn-sm" style={{ ...S.btnSm, background: 'rgba(255,255,255,0.5)', border: 'none' }} onClick={() => finishOnboarding(false)}>Découvrir mon espace d&apos;abord</button>
             </div>
           ) : wait && step.type === 'input' ? (
             <div style={{ display: 'flex', gap: '12px' }}>
               <input type="text" value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={e => e.key === 'Enter' && inputValue && respond(inputValue)} placeholder={step.placeholder} style={S.input} autoFocus />
-              <button onClick={() => inputValue && respond(inputValue)} style={{ ...S.btn(true), width: '56px' }}>{Icons.send(dark ? t.bg : '#fff')}</button>
+              <button className="btn-send" onClick={() => inputValue && respond(inputValue)} style={{ ...S.btn(true), width: '56px' }}>{Icons.send(dark ? t.bg : '#fff')}</button>
             </div>
           ) : wait && step.type === 'date' ? (
             <div style={{ display: 'flex', gap: '12px' }}>
               <input type="date" value={inputValue} onChange={e => setInputValue(e.target.value)} style={{ ...S.input, colorScheme: dark ? 'dark' : 'light' }} />
-              <button onClick={() => inputValue && respond(inputValue)} style={{ ...S.btn(true), width: '56px', opacity: inputValue ? 1 : 0.5 }}>{Icons.send(dark ? t.bg : '#fff')}</button>
+              <button className="btn-send" onClick={() => inputValue && respond(inputValue)} style={{ ...S.btn(true), width: '56px', opacity: inputValue ? 1 : 0.5 }}>{Icons.send(dark ? t.bg : '#fff')}</button>
             </div>
           ) : wait && step.type === 'choice' ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {step.options?.map(o => <button key={String(o.value)} onClick={() => respond(o.value)} style={{ ...S.card, padding: '16px', textAlign: 'left', cursor: 'pointer', marginBottom: 0 }}>{o.label}</button>)}
+              {step.options?.map(o => <button className="btn-option" key={String(o.value)} onClick={() => respond(o.value)} style={{ ...S.card, padding: '16px', textAlign: 'left', cursor: 'pointer', marginBottom: 0 }}>{o.label}</button>)}
             </div>
           ) : wait && step.type === 'message' ? (
-            <button style={S.btn(true)} onClick={() => setOnboardStep(s => s + 1)}>Continuer</button>
+            <button className="btn-primary" style={S.btn(true)} onClick={() => setOnboardStep(s => s + 1)}>Continuer</button>
           ) : null}
         </div>
       </div>
@@ -840,10 +840,10 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
             <h1 style={{ fontSize: '26px', fontWeight: '200', letterSpacing: '0.5px' }}>Hello <span style={{ fontWeight: '400' }}>{profile.name}</span></h1>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button onClick={() => setDark(!dark)} style={{ background: 'rgba(255,255,255,0.6)', border: 'none', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
+            <button className="btn-icon" onClick={() => setDark(!dark)} style={{ background: 'rgba(255,255,255,0.6)', border: 'none', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }}>
               {dark ? Icons.sun(t.text) : Icons.moon(t.soft)}
             </button>
-            <button onClick={onSignOut} style={{ background: 'rgba(255,255,255,0.6)', border: 'none', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', fontSize: '12px' }}>
+            <button className="btn-icon" onClick={onSignOut} style={{ background: 'rgba(255,255,255,0.6)', border: 'none', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', fontSize: '12px' }}>
               👋
             </button>
           </div>
@@ -858,7 +858,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               </div>
 
               {/* Chat Orb */}
-              <div style={{ ...S.card, cursor: 'pointer', padding: '40px 24px', textAlign: 'center', background: 'rgba(255,255,255,0.5)' }} onClick={openChat}>
+              <div className="card-clickable" style={{ ...S.card, cursor: 'pointer', padding: '40px 24px', textAlign: 'center', background: 'rgba(255,255,255,0.5)' }} onClick={openChat}>
                 <div style={{ margin: '0 auto 24px', position: 'relative', display: 'inline-block' }}><GlassOrb size={120} notification={!profileComplete} /></div>
                 <p style={{ fontSize: '20px', fontWeight: '300', marginBottom: '8px', color: t.text, letterSpacing: '0.5px' }}>Parler à Éclore</p>
                 <p style={{ fontSize: '14px', color: t.soft, fontWeight: '300', letterSpacing: '0.3px' }}>Je suis là pour t&apos;écouter</p>
@@ -866,7 +866,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
 
               {/* Complete Profile */}
               {!profileComplete && (
-                <div style={{ ...S.card, cursor: 'pointer', background: 'rgba(255,255,255,0.5)', border: 'none' }} onClick={startQ}>
+                <div className="card-clickable" style={{ ...S.card, cursor: 'pointer', background: 'rgba(255,255,255,0.5)', border: 'none' }} onClick={startQ}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: `linear-gradient(135deg, ${t.accent}40, ${t.accent2}30)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{Icons.target(t.accent)}</div>
                     <div style={{ flex: 1 }}>
@@ -886,7 +886,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                     <p style={{ fontSize: '17px', marginBottom: '20px', fontWeight: '300' }}>Comment tu te sens ?</p>
                     <div style={{ display: 'flex', gap: '10px' }}>
                       {MOODS.map(m => (
-                        <button key={m.v} onClick={() => checkIn(m.v)} style={{ flex: 1, padding: '16px 8px', borderRadius: '20px', border: 'none', background: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease', backdropFilter: 'blur(8px)' }}>
+                        <button className="btn-mood" key={m.v} onClick={() => checkIn(m.v)} style={{ flex: 1, padding: '16px 8px', borderRadius: '20px', border: 'none', background: 'rgba(255,255,255,0.6)', cursor: 'pointer', transition: 'all 0.2s ease', backdropFilter: 'blur(8px)' }}>
                           <span style={{ fontSize: '28px', display: 'block' }}>{m.e}</span>
                           <span style={{ fontSize: '10px', color: t.soft, fontWeight: '300', marginTop: '4px', display: 'block' }}>{m.l}</span>
                         </button>
@@ -907,7 +907,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                       <p style={{ fontSize: '11px', color: t.soft, marginBottom: '14px', fontWeight: '400', letterSpacing: '1px', textTransform: 'uppercase' }}>Comment t&apos;aider ?</p>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         {moodResponse.actions.map((a, i) => (
-                          <button key={i} onClick={() => { if (a.act === 'chat') openChat(); else if (a.act === 'ex') openEx(EXERCISES.find(e => e.id === a.id)!); else setMoodResponse(null); }} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderRadius: '16px', border: 'none', background: i === 0 ? `linear-gradient(135deg, ${t.accent}, ${t.accent2})` : 'rgba(255,255,255,0.6)', color: i === 0 ? '#fff' : t.text, cursor: 'pointer', textAlign: 'left', boxShadow: i === 0 ? '0 6px 20px rgba(190,174,226,0.3)' : 'none' }}>
+                          <button className={i === 0 ? 'btn-primary' : 'btn-option'} key={i} onClick={() => { if (a.act === 'chat') openChat(); else if (a.act === 'ex') openEx(EXERCISES.find(e => e.id === a.id)!); else setMoodResponse(null); }} style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '14px 18px', borderRadius: '16px', border: 'none', background: i === 0 ? `linear-gradient(135deg, ${t.accent}, ${t.accent2})` : 'rgba(255,255,255,0.6)', color: i === 0 ? '#fff' : t.text, cursor: 'pointer', textAlign: 'left', boxShadow: i === 0 ? '0 6px 20px rgba(190,174,226,0.3)' : 'none' }}>
                             <span style={{ fontSize: '20px' }}>{a.act === 'chat' ? '💬' : a.act === 'ex' ? EXERCISES.find(e => e.id === a.id)?.icon : '✓'}</span>
                             <span style={{ fontWeight: '400', letterSpacing: '0.2px' }}>{a.act === 'chat' ? 'Parler à Éclore' : a.act === 'ex' ? EXERCISES.find(e => e.id === a.id)?.title : 'C\'est noté'}</span>
                           </button>
@@ -965,12 +965,12 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                   {waterPercent >= 100 && <span style={{ color: t.success, fontSize: '13px', fontWeight: '500' }}>✓ Bravo !</span>}
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
-                  <button onClick={() => addWater(250)} style={{ flex: 1, padding: '14px', borderRadius: '16px', border: `1px solid ${t.turquoise}40`, background: `${t.turquoise}15`, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  <button className="btn-water" onClick={() => addWater(250)} style={{ flex: 1, padding: '14px', borderRadius: '16px', border: `1px solid ${t.turquoise}40`, background: `${t.turquoise}15`, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                     <span>{Icons.water(t.turquoise)}</span>
                     <span style={{ fontWeight: '500', fontSize: '14px' }}>+250ml</span>
                   </button>
-                  <button onClick={() => addWater(500)} style={{ flex: 1, padding: '14px', borderRadius: '16px', border: 'none', background: `linear-gradient(135deg, ${t.turquoise}, ${t.mint})`, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#2D2D3A', fontWeight: '500', fontSize: '14px' }}>+500ml</button>
-                  {waterIntake > 0 && <button onClick={() => setWaterIntake(0)} style={{ padding: '14px 16px', borderRadius: '16px', border: `1px solid ${t.border}`, background: 'transparent', cursor: 'pointer', fontSize: '12px', color: t.soft }}>Reset</button>}
+                  <button className="btn-water-primary" onClick={() => addWater(500)} style={{ flex: 1, padding: '14px', borderRadius: '16px', border: 'none', background: `linear-gradient(135deg, ${t.turquoise}, ${t.mint})`, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', color: '#2D2D3A', fontWeight: '500', fontSize: '14px' }}>+500ml</button>
+                  {waterIntake > 0 && <button className="btn-sm" onClick={() => setWaterIntake(0)} style={{ padding: '14px 16px', borderRadius: '16px', border: `1px solid ${t.border}`, background: 'transparent', cursor: 'pointer', fontSize: '12px', color: t.soft }}>Reset</button>}
                 </div>
               </div>
 
@@ -978,7 +978,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               <div style={S.card}>
                 <p style={{ fontSize: '12px', color: t.soft, marginBottom: '14px', fontWeight: '500' }}>🧰 Boîte à outils</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px', borderRadius: '16px', background: `${t.danger}08`, cursor: 'pointer' }} onClick={() => setModal('sos')}>
+                  <div className="btn-sos" style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px', borderRadius: '16px', background: `${t.danger}08`, cursor: 'pointer' }} onClick={() => setModal('sos')}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: `${t.danger}15`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{Icons.phone(t.danger)}</div>
                     <div style={{ flex: 1 }}>
                       <p style={{ fontWeight: '500', fontSize: '14px', color: t.danger }}>Besoin d&apos;aide urgente</p>
@@ -1004,24 +1004,24 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                           </div>
                           {isLastQuestion && (
                             <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                              {m.opts?.map(o => <button key={o.v} onClick={() => answerQ(m.qId!, o.v, o.l)} style={{ ...S.card, padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0 }}>{o.l}</button>)}
+                              {m.opts?.map(o => <button className="btn-option" key={o.v} onClick={() => answerQ(m.qId!, o.v, o.l)} style={{ ...S.card, padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0 }}>{o.l}</button>)}
                             </div>
                           )}
-                          {m.showStart && !profileComplete && <button onClick={startQ} style={{ ...S.btn(true), marginTop: '12px' }}>Commencer</button>}
+                          {m.showStart && !profileComplete && <button className="btn-primary" onClick={startQ} style={{ ...S.btn(true), marginTop: '12px' }}>Commencer</button>}
                           {m.showContinue && m.nextSection && (
                             <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
-                              <button onClick={() => startSection(m.nextSection!)} style={S.btn(true)}>Continuer</button>
-                              <button onClick={() => setChatHistory(h => [...h, { role: 'ai', text: 'OK !' }])} style={S.btnSm}>Plus tard</button>
+                              <button className="btn-primary" onClick={() => startSection(m.nextSection!)} style={S.btn(true)}>Continuer</button>
+                              <button className="btn-sm" onClick={() => setChatHistory(h => [...h, { role: 'ai', text: 'OK !' }])} style={S.btnSm}>Plus tard</button>
                             </div>
                           )}
                           {m.showAxes && m.axes && (
                             <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                              {m.axes.map(a => <button key={a.id} onClick={() => selectPrimary(a.id)} style={{ ...S.card, padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0, display: 'flex', alignItems: 'center', gap: '12px' }}><span style={{ fontSize: '24px' }}>{a.icon}</span><div><p style={{ fontWeight: '500' }}>{a.label}</p></div></button>)}
+                              {m.axes.map(a => <button className="btn-option" key={a.id} onClick={() => selectPrimary(a.id)} style={{ ...S.card, padding: '14px', textAlign: 'left', cursor: 'pointer', marginBottom: 0, display: 'flex', alignItems: 'center', gap: '12px' }}><span style={{ fontSize: '24px' }}>{a.icon}</span><div><p style={{ fontWeight: '500' }}>{a.label}</p></div></button>)}
                             </div>
                           )}
                           {m.showSecondary && <SecondarySelector axes={axesAnalysis?.filter(a => a.id !== m.primaryId && a.score > 0).slice(0, 4) || []} onSelect={selectSecondary} onSkip={skipSecondary} S={S} t={t} />}
-                          {m.showSOS && <button onClick={() => setModal('sos')} style={{ ...S.btnSm, marginTop: '10px', background: `${t.danger}20`, color: t.danger }}>📞 Aide</button>}
-                          {m.suggest && <button onClick={() => openEx(EXERCISES.find(e => e.id === m.suggest)!)} style={{ ...S.btnSm, marginTop: '10px' }}>{EXERCISES.find(e => e.id === m.suggest)?.icon} Exercice</button>}
+                          {m.showSOS && <button className="btn-sm" onClick={() => setModal('sos')} style={{ ...S.btnSm, marginTop: '10px', background: `${t.danger}20`, color: t.danger }}>📞 Aide</button>}
+                          {m.suggest && <button className="btn-sm" onClick={() => openEx(EXERCISES.find(e => e.id === m.suggest)!)} style={{ ...S.btnSm, marginTop: '10px' }}>{EXERCISES.find(e => e.id === m.suggest)?.icon} Exercice</button>}
                         </div>
                       </div>
                     </div>
@@ -1033,7 +1033,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               {!chatHistory.some(m => m.isQ && m.opts && chatHistory.indexOf(m) === chatHistory.length - 1) && (
                 <div style={{ display: 'flex', gap: '12px', paddingTop: '12px' }}>
                   <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendChat()} placeholder="Écris..." style={S.input} disabled={isLoading} />
-                  <button onClick={sendChat} style={{ ...S.btn(true), width: '56px' }} disabled={isLoading}>{Icons.send(dark ? t.bg : '#fff')}</button>
+                  <button className="btn-send" onClick={sendChat} style={{ ...S.btn(true), width: '56px' }} disabled={isLoading}>{Icons.send(dark ? t.bg : '#fff')}</button>
                 </div>
               )}
             </div>
@@ -1050,7 +1050,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               {searchQuery ? (
                 <>
                   {ARTICLES.filter(a => a.title.toLowerCase().includes(searchQuery.toLowerCase())).map(a => (
-                    <div key={a.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => setSelectedArticle(a)}>
+                    <div className="card-clickable" key={a.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => setSelectedArticle(a)}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                         <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: CATEGORIES.find(c => c.id === a.cat)?.color + '30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>{CATEGORIES.find(c => c.id === a.cat)?.icon}</div>
                         <div style={{ flex: 1 }}>
@@ -1064,9 +1064,9 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                 </>
               ) : selectedCategory ? (
                 <>
-                  <button onClick={() => setSelectedCategory(null)} style={{ ...S.btnSm, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>{Icons.back(t.text)} Retour</button>
+                  <button className="btn-back" onClick={() => setSelectedCategory(null)} style={{ ...S.btnSm, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>{Icons.back(t.text)} Retour</button>
                   {ARTICLES.filter(a => a.cat === selectedCategory).map(a => (
-                    <div key={a.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => setSelectedArticle(a)}>
+                    <div className="card-clickable" key={a.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => setSelectedArticle(a)}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div>
                           <p style={{ fontWeight: '500', marginBottom: '4px' }}>{a.title}</p>
@@ -1080,7 +1080,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {CATEGORIES.map(c => (
-                    <div key={c.id} style={{ ...S.card, cursor: 'pointer', padding: '20px', marginBottom: 0 }} onClick={() => setSelectedCategory(c.id)}>
+                    <div className="card-clickable" key={c.id} style={{ ...S.card, cursor: 'pointer', padding: '20px', marginBottom: 0 }} onClick={() => setSelectedCategory(c.id)}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: `linear-gradient(135deg, ${c.color}40, ${c.color}20)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px' }}>{c.icon}</div>
                         <div style={{ flex: 1 }}>
@@ -1105,7 +1105,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                 <input type="text" value={exerciseSearch} onChange={e => setExerciseSearch(e.target.value)} placeholder="Rechercher..." style={{ ...S.input, paddingLeft: '50px' }} />
               </div>
               {EXERCISES.filter(ex => !exerciseSearch || ex.title.toLowerCase().includes(exerciseSearch.toLowerCase())).map(ex => (
-                <div key={ex.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => openEx(ex)}>
+                <div className="card-clickable" key={ex.id} style={{ ...S.card, cursor: 'pointer' }} onClick={() => openEx(ex)}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                     <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: ex.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0 }}>{ex.icon}</div>
                     <div style={{ flex: 1, minWidth: 0 }}>
@@ -1132,7 +1132,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '24px', marginBottom: '14px' }}>
                 <p style={{ fontSize: '11px', color: t.soft, textTransform: 'uppercase' }}>Événements</p>
-                <button onClick={() => setModal('addEvent')} style={S.btnSm}>{Icons.plus(t.text)} Ajouter</button>
+                <button className="btn-sm" onClick={() => setModal('addEvent')} style={S.btnSm}>{Icons.plus(t.text)} Ajouter</button>
               </div>
               {babyEvents.map(e => (
                 <div key={e.id} style={{ ...S.card, display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -1182,7 +1182,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
             { id: 'baby', icon: Icons.baby, l: 'Bébé' },
             { id: 'evolution', icon: Icons.chart, l: 'Évolution' }
           ].map(n => (
-            <div key={n.id} onClick={() => n.id === 'chat' ? openChat() : setTab(n.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '6px 8px', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease' }}>
+            <div className="nav-tab" key={n.id} onClick={() => n.id === 'chat' ? openChat() : setTab(n.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '6px 8px', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease' }}>
               <div style={{ padding: '8px', borderRadius: '12px', background: tab === n.id ? `${t.accent}15` : 'transparent', transition: 'all 0.2s ease' }}>{n.icon(tab === n.id ? t.accent : t.soft)}</div>
               <span style={{ fontSize: '10px', fontWeight: tab === n.id ? '500' : '400', color: tab === n.id ? t.accent : t.soft }}>{n.l}</span>
               {n.id === 'chat' && !profileComplete && <div style={{ position: 'absolute', top: '4px', right: '4px', width: '8px', height: '8px', borderRadius: '50%', background: t.danger, boxShadow: '0 2px 4px rgba(232,165,165,0.4)' }} />}
@@ -1194,7 +1194,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         {modal === 'exercise' && currentExercise && (
           <div style={S.full}>
             <div style={{ padding: '24px', maxWidth: '440px', margin: '0 auto' }}>
-              <button onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: t.soft }}>{Icons.back(t.soft)} <span>Retour</span></button>
+              <button className="btn-back" onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: t.soft }}>{Icons.back(t.soft)} <span>Retour</span></button>
               <div style={{ textAlign: 'center', marginBottom: '20px' }}>
                 <div style={{ width: '80px', height: '80px', borderRadius: '24px', background: currentExercise.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '40px', margin: '0 auto 16px' }}>{currentExercise.icon}</div>
                 <h2 style={{ fontSize: '24px', fontWeight: '400' }}>{currentExercise.title}</h2>
@@ -1208,7 +1208,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                     <p style={{ fontSize: '16px', marginBottom: '8px' }}>Relâche : <strong>6 secondes</strong></p>
                     <p style={{ fontSize: '16px' }}>Répète : <strong>8 fois</strong></p>
                   </div>
-                  <button onClick={() => { doneEx(); setModal(null); }} style={{ ...S.btn(true), marginTop: '24px' }}>J&apos;ai fait ! ✓</button>
+                  <button className="btn-primary" onClick={() => { doneEx(); setModal(null); }} style={{ ...S.btn(true), marginTop: '24px' }}>J&apos;ai fait ! ✓</button>
                 </>
               ) : exerciseStep < (currentExercise.steps?.length || 0) ? (
                 <>
@@ -1216,8 +1216,8 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                   <p style={{ fontSize: '12px', color: t.soft, textAlign: 'center', marginBottom: '16px' }}>Étape {exerciseStep + 1} sur {currentExercise.steps?.length}</p>
                   <div style={{ ...S.card, padding: '32px 24px', textAlign: 'center', minHeight: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p style={{ fontSize: '18px', lineHeight: 1.6 }}>{currentExercise.steps?.[exerciseStep]}</p></div>
                   <div style={{ display: 'flex', gap: '12px', marginTop: '24px' }}>
-                    {exerciseStep > 0 && <button onClick={() => setExerciseStep(s => s - 1)} style={S.btnSm}>← Précédent</button>}
-                    <button onClick={() => exerciseStep === (currentExercise.steps?.length || 1) - 1 ? doneEx() : setExerciseStep(s => s + 1)} style={{ ...S.btn(true), flex: 1 }}>{exerciseStep === (currentExercise.steps?.length || 1) - 1 ? 'Terminer ✓' : 'Suivant →'}</button>
+                    {exerciseStep > 0 && <button className="btn-sm" onClick={() => setExerciseStep(s => s - 1)} style={S.btnSm}>← Précédent</button>}
+                    <button className="btn-primary" onClick={() => exerciseStep === (currentExercise.steps?.length || 1) - 1 ? doneEx() : setExerciseStep(s => s + 1)} style={{ ...S.btn(true), flex: 1 }}>{exerciseStep === (currentExercise.steps?.length || 1) - 1 ? 'Terminer ✓' : 'Suivant →'}</button>
                   </div>
                 </>
               ) : (
@@ -1227,7 +1227,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                     <p style={{ fontSize: '20px', fontWeight: '500', marginTop: '16px' }}>Bravo !</p>
                     <p style={{ color: t.soft, marginTop: '8px' }}>Tu as pris soin de toi 💜</p>
                   </div>
-                  <button onClick={() => setModal(null)} style={{ ...S.btn(true), marginTop: '24px' }}>Fermer</button>
+                  <button className="btn-primary" onClick={() => setModal(null)} style={{ ...S.btn(true), marginTop: '24px' }}>Fermer</button>
                 </>
               )}
             </div>
@@ -1238,7 +1238,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         {modal === 'sos' && (
           <div style={S.full}>
             <div style={{ padding: '24px', maxWidth: '440px', margin: '0 auto' }}>
-              <button onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px' }}>{Icons.back(t.soft)}</button>
+              <button className="btn-back" onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px' }}>{Icons.back(t.soft)}</button>
               <h2 style={{ fontSize: '24px', fontWeight: '300', marginBottom: '24px' }}>Aide urgente</h2>
               {SOS.map(s => (
                 <div key={s.number} style={{ ...S.card, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -1258,15 +1258,15 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         {modal === 'addEvent' && (
           <div style={S.full}>
             <div style={{ padding: '24px', maxWidth: '440px', margin: '0 auto' }}>
-              <button onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px' }}>{Icons.back(t.soft)}</button>
+              <button className="btn-back" onClick={() => setModal(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px' }}>{Icons.back(t.soft)}</button>
               <h2 style={{ fontSize: '24px', fontWeight: '300', marginBottom: '20px' }}>Ajouter événement</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
                 {BABY_EVENTS.map(e => (
-                  <button key={e.id} onClick={() => setNewEventType(e.id)} style={{ padding: '10px 14px', borderRadius: '50px', border: newEventType === e.id ? `2px solid ${t.accent}` : `1px solid ${t.border}`, background: newEventType === e.id ? `${t.accent}15` : 'transparent', cursor: 'pointer' }}>{e.icon} {e.label}</button>
+                  <button className={`btn-event-type ${newEventType === e.id ? 'selected' : ''}`} key={e.id} onClick={() => setNewEventType(e.id)} style={{ padding: '10px 14px', borderRadius: '50px', border: newEventType === e.id ? `2px solid ${t.accent}` : `1px solid ${t.border}`, background: newEventType === e.id ? `${t.accent}15` : 'transparent', cursor: 'pointer' }}>{e.icon} {e.label}</button>
                 ))}
               </div>
               <input type="date" value={newEventDate} onChange={e => setNewEventDate(e.target.value)} style={{ ...S.input, marginBottom: '20px' }} />
-              <button onClick={addEvent} style={{ ...S.btn(true), opacity: newEventType && newEventDate ? 1 : 0.4 }}>Ajouter</button>
+              <button className="btn-primary" onClick={addEvent} style={{ ...S.btn(true), opacity: newEventType && newEventDate ? 1 : 0.4 }}>Ajouter</button>
             </div>
           </div>
         )}
@@ -1275,7 +1275,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         {selectedArticle && (
           <div style={S.full}>
             <div style={{ padding: '24px', maxWidth: '500px', margin: '0 auto' }}>
-              <button onClick={() => { if (!readArticles.includes(selectedArticle.id)) setReadArticles([...readArticles, selectedArticle.id]); setSelectedArticle(null); }} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: t.soft }}>{Icons.back(t.soft)} <span>Retour</span></button>
+              <button className="btn-back" onClick={() => { if (!readArticles.includes(selectedArticle.id)) setReadArticles([...readArticles, selectedArticle.id]); setSelectedArticle(null); }} style={{ background: 'none', border: 'none', cursor: 'pointer', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: t.soft }}>{Icons.back(t.soft)} <span>Retour</span></button>
               <div style={{ marginBottom: '24px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
                   <span style={{ padding: '4px 12px', borderRadius: '50px', background: `${CATEGORIES.find(c => c.id === selectedArticle.cat)?.color}30`, fontSize: '12px' }}>{CATEGORIES.find(c => c.id === selectedArticle.cat)?.label}</span>
@@ -1298,7 +1298,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                   })}
                 </div>
               </div>
-              <button onClick={() => { if (!readArticles.includes(selectedArticle.id)) setReadArticles([...readArticles, selectedArticle.id]); setSelectedArticle(null); }} style={{ ...S.btn(true), marginTop: '24px' }}>J&apos;ai compris 💜</button>
+              <button className="btn-primary" onClick={() => { if (!readArticles.includes(selectedArticle.id)) setReadArticles([...readArticles, selectedArticle.id]); setSelectedArticle(null); }} style={{ ...S.btn(true), marginTop: '24px' }}>J&apos;ai compris 💜</button>
             </div>
           </div>
         )}
