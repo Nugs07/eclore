@@ -28,8 +28,8 @@
 }
 
 .btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 8px 24px rgba(190, 174, 226, 0.4);
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 16px rgba(190, 174, 226, 0.35);
 }
 
 .btn-primary:disabled {
@@ -62,7 +62,8 @@
 }
 
 .btn-secondary:active {
-  transform: translateY(0);
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Small Button */
@@ -88,7 +89,8 @@
 }
 
 .btn-sm:active {
-  transform: translateY(0);
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 /* Option Card Button (for choices) */
@@ -114,7 +116,9 @@
 }
 
 .btn-option:active {
-  transform: translateX(2px);
+  transform: translateX(2px) scale(0.98);
+  box-shadow: 0 2px 8px rgba(190, 174, 226, 0.15);
+  background: rgba(190, 174, 226, 0.1);
 }
 
 /* Icon Button (round buttons) */
@@ -140,7 +144,8 @@
 }
 
 .btn-icon:active {
-  transform: scale(1);
+  transform: scale(0.92);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* Mood Button */
@@ -163,7 +168,8 @@
 }
 
 .btn-mood:active {
-  transform: translateY(-2px);
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 2px 8px rgba(190, 174, 226, 0.15);
 }
 
 /* Water Button */
@@ -188,6 +194,11 @@
   box-shadow: 0 4px 12px rgba(125, 227, 175, 0.2);
 }
 
+.btn-water:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 1px 4px rgba(125, 227, 175, 0.15);
+}
+
 .btn-water-primary {
   flex: 1;
   padding: 14px;
@@ -208,6 +219,11 @@
 .btn-water-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(125, 227, 175, 0.35);
+}
+
+.btn-water-primary:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 2px 8px rgba(125, 227, 175, 0.25);
 }
 
 /* Card Clickable */
@@ -244,6 +260,11 @@
   transform: translateX(4px);
 }
 
+.btn-sos:active {
+  transform: translateX(2px) scale(0.98);
+  background: rgba(231, 111, 81, 0.2);
+}
+
 /* Tab Navigation */
 .nav-tab {
   display: flex;
@@ -259,37 +280,47 @@
 }
 
 .nav-tab:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+.nav-tab:active {
+  transform: translateY(0) scale(0.95);
 }
 
 /* Send Button */
 .btn-send {
-  padding: 14px;
+  padding: 16px;
   border-radius: 50%;
   border: none;
-  background: linear-gradient(135deg, #BEAEE2 0%, #F7DBF0 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #A594D6 0%, #E8B4D8 100%);
+  color: #2D2D3A;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(190, 174, 226, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 8px 24px rgba(165, 148, 214, 0.45);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 52px;
+  min-height: 52px;
 }
 
 .btn-send:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 28px rgba(190, 174, 226, 0.45);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 14px 32px rgba(165, 148, 214, 0.55);
+  background: linear-gradient(135deg, #9584C6 0%, #DBA0CC 100%);
 }
 
 .btn-send:active {
-  transform: scale(1);
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(165, 148, 214, 0.4);
+  background: linear-gradient(135deg, #8A79BB 0%, #D08FC0 100%);
 }
 
 .btn-send:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  box-shadow: 0 4px 12px rgba(165, 148, 214, 0.2);
 }
 
 /* Back Button */
@@ -310,6 +341,12 @@
 .btn-back:hover {
   background: rgba(0, 0, 0, 0.04);
   color: #2D2D3A;
+  transform: translateX(-2px);
+}
+
+.btn-back:active {
+  transform: translateX(0) scale(0.96);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 /* Event Type Button */
@@ -325,6 +362,11 @@
 .btn-event-type:hover {
   background: rgba(190, 174, 226, 0.1);
   border-color: rgba(190, 174, 226, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-event-type:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .btn-event-type.selected {

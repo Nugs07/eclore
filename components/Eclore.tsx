@@ -1033,7 +1033,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               {!chatHistory.some(m => m.isQ && m.opts && chatHistory.indexOf(m) === chatHistory.length - 1) && (
                 <div style={{ display: 'flex', gap: '12px', paddingTop: '12px' }}>
                   <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendChat()} placeholder="Écris..." style={S.input} disabled={isLoading} />
-                  <button className="btn-send" onClick={sendChat} style={{ ...S.btn(true), width: '56px' }} disabled={isLoading}>{Icons.send(dark ? t.bg : '#fff')}</button>
+                  <button className="btn-send" onClick={sendChat} disabled={isLoading}>{Icons.send('#2D2D3A')}</button>
                 </div>
               )}
             </div>
