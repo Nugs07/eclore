@@ -479,12 +479,12 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
     : { bg: '#FAFBFC', card: '#FFFFFF', text: '#2D2D3A', soft: '#9D9DAF', accent: '#BEAEE2', accent2: '#F7DBF0', mint: '#CBEBCE', turquoise: '#CDF0EA', border: 'rgba(0,0,0,0.04)', success: '#9BCFB0', danger: '#E8A5A5' };
 
   const S = {
-    page: { minHeight: '100vh', background: dark ? '#1a1a2e' : '#FDF8F6', fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", color: t.text, fontWeight: '300', letterSpacing: '0.2px' },
-    card: { background: dark ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.7)', borderRadius: '24px', padding: '24px', boxShadow: dark ? 'none' : '0 2px 16px rgba(190, 174, 226, 0.06)', marginBottom: '16px', backdropFilter: 'blur(10px)', border: 'none' },
-    btn: (f: boolean) => ({ padding: '18px 36px', borderRadius: '60px', border: 'none', background: f ? `linear-gradient(135deg, ${t.accent} 0%, ${t.accent2} 100%)` : 'rgba(255,255,255,0.8)', color: f ? '#fff' : t.text, cursor: 'pointer', fontSize: '15px', fontWeight: '400', width: '100%', letterSpacing: '0.5px', boxShadow: f ? '0 12px 32px rgba(190, 174, 226, 0.35)' : 'none', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }),
-    btnSm: { padding: '14px 24px', borderRadius: '50px', border: 'none', background: 'rgba(255,255,255,0.6)', color: t.text, cursor: 'pointer', fontSize: '14px', fontWeight: '400', letterSpacing: '0.3px', backdropFilter: 'blur(8px)', transition: 'all 0.2s ease' },
-    input: { width: '100%', padding: '18px 24px', borderRadius: '20px', border: 'none', background: 'rgba(255,255,255,0.7)', color: t.text, fontSize: '16px', outline: 'none', boxSizing: 'border-box' as const, backdropFilter: 'blur(8px)', fontWeight: '300', letterSpacing: '0.2px', transition: 'all 0.2s ease' },
-    full: { position: 'fixed' as const, inset: 0, background: dark ? '#1a1a2e' : '#FDF8F6', zIndex: 100, overflow: 'auto' }
+    page: { minHeight: '100vh', background: dark ? '#1a1a2e' : 'linear-gradient(180deg, #FDF8F6 0%, #F5EEF8 100%)', fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", color: t.text, fontWeight: '300', letterSpacing: '0.2px' },
+    card: { background: dark ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.85)', borderRadius: '24px', padding: '24px', boxShadow: dark ? '0 4px 20px rgba(0,0,0,0.3)' : '0 4px 24px rgba(190, 174, 226, 0.15), 0 1px 3px rgba(0,0,0,0.04)', marginBottom: '16px', backdropFilter: 'blur(12px)', border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(190, 174, 226, 0.12)' },
+    btn: (f: boolean) => ({ padding: '18px 36px', borderRadius: '60px', border: f ? 'none' : '1px solid rgba(190, 174, 226, 0.2)', background: f ? `linear-gradient(135deg, #A594D6 0%, #E8B4D8 100%)` : 'rgba(255,255,255,0.9)', color: f ? '#fff' : t.text, cursor: 'pointer', fontSize: '15px', fontWeight: f ? '500' : '400', width: '100%', letterSpacing: '0.5px', boxShadow: f ? '0 8px 28px rgba(165, 148, 214, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)' : '0 2px 8px rgba(0,0,0,0.04)', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', textShadow: f ? '0 1px 2px rgba(0,0,0,0.1)' : 'none' }),
+    btnSm: { padding: '14px 24px', borderRadius: '50px', border: '1px solid rgba(190, 174, 226, 0.2)', background: 'rgba(255,255,255,0.85)', color: t.text, cursor: 'pointer', fontSize: '14px', fontWeight: '400', letterSpacing: '0.3px', backdropFilter: 'blur(8px)', transition: 'all 0.2s ease', boxShadow: '0 2px 8px rgba(190, 174, 226, 0.1)' },
+    input: { width: '100%', padding: '18px 24px', borderRadius: '20px', border: '1px solid rgba(190, 174, 226, 0.15)', background: 'rgba(255,255,255,0.9)', color: t.text, fontSize: '16px', outline: 'none', boxSizing: 'border-box' as const, backdropFilter: 'blur(8px)', fontWeight: '300', letterSpacing: '0.2px', transition: 'all 0.2s ease', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.02)' },
+    full: { position: 'fixed' as const, inset: 0, background: dark ? '#1a1a2e' : 'linear-gradient(180deg, #FDF8F6 0%, #F5EEF8 100%)', zIndex: 100, overflow: 'auto' }
   };
 
   const up = useCallback((k: string, v: string | number) => setProfile(p => ({ ...p, [k]: v })), []);
@@ -1033,7 +1033,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
               {!chatHistory.some(m => m.isQ && m.opts && chatHistory.indexOf(m) === chatHistory.length - 1) && (
                 <div style={{ display: 'flex', gap: '12px', paddingTop: '12px' }}>
                   <input value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendChat()} placeholder="Écris..." style={S.input} disabled={isLoading} />
-                  <button className="btn-send" onClick={sendChat} disabled={isLoading}>{Icons.send('#2D2D3A')}</button>
+                  <button className="btn-send" onClick={sendChat} disabled={isLoading}>{Icons.send('#fff')}</button>
                 </div>
               )}
             </div>
