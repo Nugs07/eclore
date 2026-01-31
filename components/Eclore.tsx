@@ -999,7 +999,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                     <div key={i} style={{ marginBottom: '14px' }}>
                       <div style={{ display: 'flex', justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start' }}>
                         <div style={{ maxWidth: '85%' }}>
-                          <div style={{ padding: '16px 20px', borderRadius: m.role === 'user' ? '24px 24px 6px 24px' : '24px 24px 24px 6px', background: m.role === 'user' ? t.text : t.card, color: m.role === 'user' ? (dark ? t.bg : '#fff') : t.text, fontSize: '15px', lineHeight: 1.4, whiteSpace: 'pre-line' }}>
+                          <div style={{ padding: '16px 20px', borderRadius: m.role === 'user' ? '24px 24px 6px 24px' : '24px 24px 24px 6px', background: m.role === 'user' ? t.text : t.card, color: m.role === 'user' ? (dark ? t.bg : '#fff') : t.text, fontSize: '15px', lineHeight: 1, whiteSpace: 'pre-line' }}>
                             {m.text.split('**').map((p, j) => j % 2 === 1 ? <strong key={j}>{p}</strong> : p)}
                           </div>
                           {isLastQuestion && (
