@@ -6,16 +6,30 @@
 
 /* CSS Variables for theming */
 :root {
-  --accent-primary: #8B6FD6;
-  --accent-secondary: #C86BA8;
-  --shadow-color: rgba(139, 111, 214, 0.25);
-  --shadow-strong: rgba(139, 111, 214, 0.4);
+  --bg-primary: #FDF8F6;
+  --bg-secondary: #F0E6F4;
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --text-primary: #1a1a2a;
+  --text-secondary: #6B6B7B;
+  --accent-primary: #6B4FB6;
+  --accent-secondary: #A83A78;
+  --accent-light: #7B5FC6;
+  --border-color: rgba(123, 95, 198, 0.2);
+  --shadow-color: rgba(123, 95, 198, 0.2);
+  --shadow-strong: rgba(123, 95, 198, 0.35);
 }
 
-/* Dark mode body class */
-body.dark-mode {
+/* Dark mode styles */
+[data-theme="dark"] {
+  --bg-primary: #0f0f1a;
+  --bg-secondary: #1a1a2e;
+  --card-bg: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8f8fc;
+  --text-secondary: rgba(255, 255, 255, 0.6);
   --accent-primary: #9B7FE6;
   --accent-secondary: #D87BC8;
+  --accent-light: #B8A4E8;
+  --border-color: rgba(255, 255, 255, 0.12);
   --shadow-color: rgba(0, 0, 0, 0.4);
   --shadow-strong: rgba(0, 0, 0, 0.6);
 }
@@ -408,6 +422,90 @@ body.dark-mode {
 .btn-icon:focus-visible,
 .btn-mood:focus-visible,
 .btn-send:focus-visible {
-  outline: 3px solid rgba(190, 174, 226, 0.6);
+  outline: 3px solid rgba(123, 95, 198, 0.6);
   outline-offset: 2px;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .btn-primary {
+  background: linear-gradient(135deg, #7B5FC6 0%, #B84A88 100%);
+  box-shadow: 0 10px 36px rgba(123, 95, 198, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #f8f8fc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .btn-sm {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #f8f8fc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .btn-option {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #f8f8fc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .btn-option:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(184, 164, 232, 0.5);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .btn-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .btn-icon:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(184, 164, 232, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .btn-mood {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .btn-mood:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(184, 164, 232, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .btn-send {
+  box-shadow: 0 8px 28px rgba(123, 95, 198, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+[data-theme="dark"] .btn-water {
+  background: rgba(110, 232, 168, 0.15);
+  border-color: rgba(110, 232, 168, 0.3);
+}
+
+[data-theme="dark"] .btn-water-primary {
+  background: linear-gradient(135deg, #4CB878, #7EE8B8);
+  color: #0a2818;
+}
+
+[data-theme="dark"] .card-clickable:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .btn-back {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .btn-back:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8f8fc;
 }

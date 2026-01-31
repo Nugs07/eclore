@@ -475,16 +475,16 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
   }, [onboardStep]);
 
   const t: Theme = dark
-    ? { bg: '#0f0f1a', card: 'rgba(255,255,255,0.08)', text: '#f8f8fc', soft: 'rgba(255,255,255,0.55)', accent: '#B8A4E8', accent2: '#E8A4D4', mint: '#7EDBA4', turquoise: '#6DD4C8', border: 'rgba(255,255,255,0.12)', success: '#7EDBA4', danger: '#E88A8A' }
-    : { bg: '#FAFBFC', card: '#FFFFFF', text: '#1a1a2a', soft: '#7D7D8F', accent: '#9B85D6', accent2: '#D685B8', mint: '#5DC98A', turquoise: '#5CC4B8', border: 'rgba(0,0,0,0.08)', success: '#5DC98A', danger: '#D67070' };
+    ? { bg: '#0f0f1a', card: 'rgba(255,255,255,0.1)', text: '#f8f8fc', soft: 'rgba(255,255,255,0.6)', accent: '#B8A4E8', accent2: '#E8A4D4', mint: '#6EE8A8', turquoise: '#5DD4C8', border: 'rgba(255,255,255,0.15)', success: '#6EE8A8', danger: '#F07070' }
+    : { bg: '#FAFBFC', card: '#FFFFFF', text: '#1a1a2a', soft: '#6B6B7B', accent: '#7B5FC6', accent2: '#C85A98', mint: '#4CB878', turquoise: '#4AB8A8', border: 'rgba(123, 95, 198, 0.15)', success: '#4CB878', danger: '#D05050' };
 
   const S = {
-    page: { minHeight: '100vh', background: dark ? 'linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%)' : 'linear-gradient(180deg, #FDF8F6 0%, #F0E6F4 100%)', fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", color: t.text, fontWeight: '300', letterSpacing: '0.2px' },
-    card: { background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.92)', borderRadius: '24px', padding: '24px', boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)' : '0 6px 28px rgba(155, 133, 214, 0.18), 0 2px 4px rgba(0,0,0,0.03)', marginBottom: '16px', backdropFilter: 'blur(16px)', border: dark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(155, 133, 214, 0.15)' },
-    btn: (f: boolean) => ({ padding: '18px 36px', borderRadius: '60px', border: f ? 'none' : (dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(155, 133, 214, 0.25)'), background: f ? `linear-gradient(135deg, ${dark ? '#8B6FD6' : '#8B6FD6'} 0%, ${dark ? '#D67AB8' : '#C86BA8'} 100%)` : (dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.95)'), color: f ? '#fff' : t.text, cursor: 'pointer', fontSize: '15px', fontWeight: f ? '600' : '500', width: '100%', letterSpacing: '0.5px', boxShadow: f ? '0 10px 32px rgba(139, 111, 214, 0.45), inset 0 1px 0 rgba(255,255,255,0.25)' : (dark ? '0 2px 8px rgba(0,0,0,0.3)' : '0 3px 12px rgba(155, 133, 214, 0.12)'), transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', textShadow: f ? '0 2px 4px rgba(0,0,0,0.2)' : 'none' }),
-    btnSm: { padding: '14px 24px', borderRadius: '50px', border: dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(155, 133, 214, 0.25)', background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.92)', color: t.text, cursor: 'pointer', fontSize: '14px', fontWeight: '500', letterSpacing: '0.3px', backdropFilter: 'blur(8px)', transition: 'all 0.2s ease', boxShadow: dark ? '0 2px 8px rgba(0,0,0,0.3)' : '0 3px 12px rgba(155, 133, 214, 0.12)' },
-    input: { width: '100%', padding: '18px 24px', borderRadius: '20px', border: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(155, 133, 214, 0.2)', background: dark ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.95)', color: t.text, fontSize: '16px', outline: 'none', boxSizing: 'border-box' as const, backdropFilter: 'blur(8px)', fontWeight: '300', letterSpacing: '0.2px', transition: 'all 0.2s ease', boxShadow: dark ? 'inset 0 2px 4px rgba(0,0,0,0.2)' : 'inset 0 2px 4px rgba(155, 133, 214, 0.06)' },
-    full: { position: 'fixed' as const, inset: 0, background: dark ? 'linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%)' : 'linear-gradient(180deg, #FDF8F6 0%, #F0E6F4 100%)', zIndex: 100, overflow: 'auto' }
+    page: { minHeight: '100vh', background: dark ? 'linear-gradient(180deg, #0a0a14 0%, #151525 100%)' : 'linear-gradient(180deg, #FDF8F6 0%, #EDE0F0 100%)', fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", color: t.text, fontWeight: '300', letterSpacing: '0.2px' },
+    card: { background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.98)', borderRadius: '20px', padding: '22px', boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)' : '0 8px 32px rgba(123, 95, 198, 0.15), 0 2px 6px rgba(0,0,0,0.04)', marginBottom: '14px', backdropFilter: 'blur(20px)', border: dark ? '1px solid rgba(255,255,255,0.12)' : '1px solid rgba(123, 95, 198, 0.12)' },
+    btn: (f: boolean) => ({ padding: '16px 32px', borderRadius: '50px', border: f ? 'none' : (dark ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(123, 95, 198, 0.3)'), background: f ? `linear-gradient(135deg, #6B4FB6 0%, #B84A88 100%)` : (dark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.98)'), color: f ? '#fff' : t.text, cursor: 'pointer', fontSize: '15px', fontWeight: f ? '600' : '600', width: '100%', letterSpacing: '0.5px', boxShadow: f ? '0 10px 36px rgba(107, 79, 182, 0.5), inset 0 1px 0 rgba(255,255,255,0.3)' : (dark ? '0 4px 16px rgba(0,0,0,0.4)' : '0 4px 16px rgba(123, 95, 198, 0.15)'), transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)', textShadow: f ? '0 2px 4px rgba(0,0,0,0.25)' : 'none' }),
+    btnSm: { padding: '12px 22px', borderRadius: '50px', border: dark ? '1px solid rgba(255,255,255,0.18)' : '1px solid rgba(123, 95, 198, 0.3)', background: dark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.98)', color: t.text, cursor: 'pointer', fontSize: '14px', fontWeight: '600', letterSpacing: '0.3px', backdropFilter: 'blur(12px)', transition: 'all 0.2s ease', boxShadow: dark ? '0 4px 16px rgba(0,0,0,0.4)' : '0 4px 16px rgba(123, 95, 198, 0.12)' },
+    input: { width: '100%', padding: '16px 22px', borderRadius: '16px', border: dark ? '1px solid rgba(255,255,255,0.15)' : '2px solid rgba(123, 95, 198, 0.2)', background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.98)', color: t.text, fontSize: '16px', outline: 'none', boxSizing: 'border-box' as const, backdropFilter: 'blur(12px)', fontWeight: '400', letterSpacing: '0.2px', transition: 'all 0.2s ease', boxShadow: dark ? 'inset 0 2px 6px rgba(0,0,0,0.3)' : 'inset 0 2px 6px rgba(123, 95, 198, 0.06)' },
+    full: { position: 'fixed' as const, inset: 0, background: dark ? 'linear-gradient(180deg, #0a0a14 0%, #151525 100%)' : 'linear-gradient(180deg, #FDF8F6 0%, #EDE0F0 100%)', zIndex: 100, overflow: 'auto' }
   };
 
   const up = useCallback((k: string, v: string | number) => setProfile(p => ({ ...p, [k]: v })), []);
@@ -833,17 +833,17 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
     };
 
     return (
-      <div style={{ ...S.page, background: `radial-gradient(ellipse 70% 35% at 90% 5%, rgba(247,219,240,0.35) 0%, transparent 50%), #FDF8F6` }}>
+      <div data-theme={dark ? 'dark' : 'light'} style={{ ...S.page, background: dark ? 'radial-gradient(ellipse 70% 35% at 90% 5%, rgba(155,127,230,0.15) 0%, transparent 50%), linear-gradient(180deg, #0f0f1a 0%, #1a1a2e 100%)' : 'radial-gradient(ellipse 70% 35% at 90% 5%, rgba(200,90,152,0.2) 0%, transparent 50%), linear-gradient(180deg, #FDF8F6 0%, #F0E6F4 100%)' }}>
         <header style={{ padding: '28px 28px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <div>
-            <p style={{ fontSize: '12px', color: t.soft, marginBottom: '6px', fontWeight: '400', letterSpacing: '1px', textTransform: 'uppercase' }}>{days[today.getDay()]} {today.getDate()} {months[today.getMonth()]}</p>
-            <h1 style={{ fontSize: '26px', fontWeight: '200', letterSpacing: '0.5px' }}>Hello <span style={{ fontWeight: '400' }}>{profile.name}</span></h1>
+            <p style={{ fontSize: '12px', color: t.soft, marginBottom: '6px', fontWeight: '500', letterSpacing: '1px', textTransform: 'uppercase' }}>{days[today.getDay()]} {today.getDate()} {months[today.getMonth()]}</p>
+            <h1 style={{ fontSize: '26px', fontWeight: '300', letterSpacing: '0.5px' }}>Hello <span style={{ fontWeight: '500' }}>{profile.name}</span></h1>
           </div>
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <button className="btn-icon" onClick={() => setDark(!dark)} style={{ background: dark ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.9)', border: dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(155, 133, 214, 0.2)', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', boxShadow: dark ? '0 4px 12px rgba(0,0,0,0.3)' : '0 4px 12px rgba(155, 133, 214, 0.15)' }}>
-              {dark ? Icons.sun('#FFD93D') : Icons.moon('#6B5B95')}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button className="btn-icon" onClick={() => setDark(!dark)} style={{ background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.95)', border: dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(123, 95, 198, 0.25)', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(12px)', boxShadow: dark ? '0 4px 16px rgba(0,0,0,0.4)' : '0 4px 16px rgba(123, 95, 198, 0.2)' }}>
+              {dark ? Icons.sun('#FFD93D') : Icons.moon('#6B4FB6')}
             </button>
-            <button className="btn-icon" onClick={onSignOut} style={{ background: 'rgba(255,255,255,0.6)', border: 'none', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)', fontSize: '12px' }}>
+            <button className="btn-icon" onClick={onSignOut} style={{ background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.95)', border: dark ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(123, 95, 198, 0.25)', borderRadius: '50%', width: '44px', height: '44px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(12px)', boxShadow: dark ? '0 4px 16px rgba(0,0,0,0.4)' : '0 4px 16px rgba(123, 95, 198, 0.2)', fontSize: '14px' }}>
               👋
             </button>
           </div>
@@ -999,7 +999,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
                     <div key={i} style={{ marginBottom: '14px' }}>
                       <div style={{ display: 'flex', justifyContent: m.role === 'user' ? 'flex-end' : 'flex-start' }}>
                         <div style={{ maxWidth: '85%' }}>
-                          <div style={{ padding: '16px 20px', borderRadius: m.role === 'user' ? '24px 24px 6px 24px' : '24px 24px 24px 6px', background: m.role === 'user' ? t.text : t.card, color: m.role === 'user' ? (dark ? t.bg : '#fff') : t.text, fontSize: '15px', lineHeight: 1, whiteSpace: 'pre-line' }}>
+                          <div style={{ padding: '14px 18px', borderRadius: m.role === 'user' ? '20px 20px 6px 20px' : '20px 20px 20px 6px', background: m.role === 'user' ? (dark ? 'linear-gradient(135deg, #7B5FC6, #9B7FE6)' : 'linear-gradient(135deg, #6B4FB6, #8B6FD6)') : (dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.95)'), color: m.role === 'user' ? '#fff' : t.text, fontSize: '15px', lineHeight: 1.3, whiteSpace: 'pre-line', boxShadow: m.role === 'user' ? '0 4px 16px rgba(123, 95, 198, 0.35)' : (dark ? '0 2px 12px rgba(0,0,0,0.3)' : '0 2px 12px rgba(123, 95, 198, 0.1)'), border: m.role === 'user' ? 'none' : (dark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(123, 95, 198, 0.1)') }}>
                             {m.text.split('**').map((p, j) => j % 2 === 1 ? <strong key={j}>{p}</strong> : p)}
                           </div>
                           {isLastQuestion && (
@@ -1173,7 +1173,7 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
         </main>
 
         {/* Nav Bar */}
-        <nav style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: dark ? 'rgba(26,26,46,0.98)' : 'rgba(255,255,255,0.98)', backdropFilter: 'blur(20px)', borderTop: `1px solid ${t.border}`, padding: '10px 0 30px', display: 'flex', justifyContent: 'space-around', zIndex: 50 }}>
+        <nav style={{ position: 'fixed', bottom: 0, left: 0, right: 0, background: dark ? 'rgba(15,15,26,0.95)' : 'rgba(255,255,255,0.92)', backdropFilter: 'blur(24px)', borderTop: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(123, 95, 198, 0.1)', padding: '8px 12px 28px', display: 'flex', justifyContent: 'space-around', zIndex: 50, boxShadow: dark ? '0 -4px 24px rgba(0,0,0,0.4)' : '0 -4px 24px rgba(123, 95, 198, 0.08)' }}>
           {[
             { id: 'home', icon: Icons.home, l: 'Accueil' },
             { id: 'chat', icon: Icons.chat, l: 'Chat' },
@@ -1182,10 +1182,10 @@ export default function Eclore({ user, initialProfile, onSignOut }: EcloreProps)
             { id: 'baby', icon: Icons.baby, l: 'Bébé' },
             { id: 'evolution', icon: Icons.chart, l: 'Évolution' }
           ].map(n => (
-            <div className="nav-tab" key={n.id} onClick={() => n.id === 'chat' ? openChat() : setTab(n.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '6px 8px', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease' }}>
-              <div style={{ padding: '8px', borderRadius: '12px', background: tab === n.id ? `${t.accent}15` : 'transparent', transition: 'all 0.2s ease' }}>{n.icon(tab === n.id ? t.accent : t.soft)}</div>
-              <span style={{ fontSize: '10px', fontWeight: tab === n.id ? '500' : '400', color: tab === n.id ? t.accent : t.soft }}>{n.l}</span>
-              {n.id === 'chat' && !profileComplete && <div style={{ position: 'absolute', top: '4px', right: '4px', width: '8px', height: '8px', borderRadius: '50%', background: t.danger, boxShadow: '0 2px 4px rgba(232,165,165,0.4)' }} />}
+            <div className="nav-tab" key={n.id} onClick={() => n.id === 'chat' ? openChat() : setTab(n.id)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', padding: '4px 6px', cursor: 'pointer', position: 'relative', transition: 'all 0.2s ease' }}>
+              <div style={{ padding: '6px', borderRadius: '10px', background: tab === n.id ? (dark ? 'rgba(155, 127, 230, 0.2)' : 'rgba(123, 95, 198, 0.12)') : 'transparent', transition: 'all 0.2s ease', boxShadow: tab === n.id ? (dark ? '0 2px 8px rgba(155, 127, 230, 0.3)' : '0 2px 8px rgba(123, 95, 198, 0.15)') : 'none' }}>{n.icon(tab === n.id ? (dark ? '#B8A4E8' : '#7B5FC6') : (dark ? 'rgba(255,255,255,0.45)' : '#9D9DAF'))}</div>
+              <span style={{ fontSize: '9px', fontWeight: tab === n.id ? '600' : '400', color: tab === n.id ? (dark ? '#B8A4E8' : '#7B5FC6') : (dark ? 'rgba(255,255,255,0.5)' : '#9D9DAF'), letterSpacing: '0.2px' }}>{n.l}</span>
+              {n.id === 'chat' && !profileComplete && <div style={{ position: 'absolute', top: '2px', right: '2px', width: '6px', height: '6px', borderRadius: '50%', background: dark ? '#E88A8A' : '#D67070', boxShadow: '0 2px 4px rgba(214,112,112,0.4)' }} />}
             </div>
           ))}
         </nav>
